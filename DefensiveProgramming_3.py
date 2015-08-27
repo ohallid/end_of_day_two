@@ -1,5 +1,6 @@
 
 # coding: utf-8
+
 #    # Defensive programming (2)
 #    We have seen the basic idea that we can insert
 #    assert statments into code, to check that the 
@@ -30,7 +31,7 @@
 # function is correct. Put these in a function. Think of different cases and 
 # about edge cases (which may show a subtle bug).
 
-# In[1]:
+# In[4]:
 
 def test_range_overlap():
     assert range_overlap([(-3.0, 5.0), (0.0, 4.5), (-1.5, 2.0)]) == (0.0, 2.0)
@@ -40,7 +41,7 @@ def test_range_overlap():
 
 # But what if there is no overlap? What if they just touch?
 
-# In[2]:
+# In[5]:
 
 def test_range_overlap_no_overlap():
     assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
@@ -49,13 +50,14 @@ def test_range_overlap_no_overlap():
 
 # What about the case of a single range?
 
-# In[3]:
+# In[6]:
 
 def test_range_overlap_one_range():
         assert range_overlap([ (0.0, 1.0) ]) == (0.0, 1.0)
 
 
-
+# The write a solution - one possible one is below.
+# In[10]:
 
 def pairs_overlap(rangeA, rangeB):
     # Check if A starts after B ends and 
@@ -106,13 +108,6 @@ def range_overlap(ranges):
             return None
 
 
-if __name__ == "__main__": 
-    import sys
-    start = float(sys.argv[1])
-    end   = float(sys.argv[2])
-
-    print range_overlap([(start, end)])
-
-
-
-
+test_range_overlap()
+test_range_overlap_one_range()
+test_range_overlap_no_overlap()
